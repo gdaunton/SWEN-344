@@ -21,7 +21,7 @@ var fs = require('fs');
 var jsDir = './js/**/*';
 
 //Output information for the bundled JS. Split into a directory/filename
-var jsOutDir = './dist',
+var jsOutDir = './public/dist',
     jsOut = 'app.js';
 
 

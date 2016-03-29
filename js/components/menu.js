@@ -8,14 +8,14 @@ var Menu = React.createClass({
         <div className="center logo item">
           <img src="assets/images/icon.png" />
         </div>
-        <a className="active link item">
+        <Link to="/" className="link item" activeClassName="active">
           <i className="large home icon"></i>
           <span className="content">Home</span>
-        </a>
-        <a className="link item">
+        </Link>
+        <Link to="favorites" className="link item" activeClassName="active">
           <i className="large star icon"></i>
           <span className="content">Favorites</span>
-        </a>
+        </Link>
         <div className="right menu">
           <div className="item">
             <a className="ui purple button">Login</a>

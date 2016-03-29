@@ -8,5 +8,6 @@ var NotFound = require('./NotFound')
 ReactDOM.render((
   <Router history={browserHistory}>
     <Route path="/" component={Home} />
+    <Route path="/favorites" component={Home} />
   </Router>
 ), document.body);

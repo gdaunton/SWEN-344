@@ -3,7 +3,7 @@ var React = require('react')
 var Category = React.createClass({
   render: function() {
     return (
-      <label for={this.props.icon} className="item">
+      <label htmlFor={this.props.icon} className="item">
         <div className="right floated content">
           <div className="ui fitted checkbox">
             <input id={this.props.icon} type="checkbox" />
