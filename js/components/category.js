@@ -1,6 +1,6 @@
 var React = require('react')
 
-var Item = React.createClass({
+var Category = React.createClass({
   render: function() {
     return (
       <div className="item">
@@ -18,4 +18,4 @@ var Item = React.createClass({
     )
   }
 });
-module.exports = Item
+module.exports = Category
