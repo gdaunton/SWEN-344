@@ -12,7 +12,31 @@ body {
   background: #fff;
 }
 
-.ui.secondary.pointing.menu .active.item {
+.ui.secondary.pointing.menu .link.item {
+  color: #737373;
+  transition: border-bottom-width .15s ease,
+            color .15s ease;
+  -webkit-transition: border-bottom-width .15s ease,
+                    color .15s ease;
+}
+
+.ui.secondary.pointing.menu .active.link.item {
+  color: #737373;
   border-color: #5770FE;
   border-bottom-width: 4px;
+}
+
+.ui.secondary.pointing.menu .active.link.item:hover {
+  border-color: #5770FE;
+  color: #5770FE;
+}
+
+.ui.secondary.pointing.menu .link.item:hover {
+  border-color: #5770FE;
+  color: #5770FE!important;
+  border-bottom-width: 4px;
+}
+
+.item > .button {
+  transform: translateY(-25%);
 }
