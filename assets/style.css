@@ -3,13 +3,27 @@ body {
 }
 
 .menu > .center.logo {
-  position: relative;
+  position: absolute;
+  padding: 0;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .ui.secondary.pointing.menu {
   background: #fff;
+}
+
+.ui.secondary.pointing.menu .item {
+  padding: 1em 1.14285714em;
+}
+
+.ui.secondary.pointing.menu > .link.item {
+  margin-left: 6em;
+}
+
+.ui.secondary.pointing.menu > .link.item ~ .link.item {
+  margin-left: 0;
 }
 
 .ui.secondary.pointing.menu .link.item {
@@ -37,6 +51,12 @@ body {
   border-bottom-width: 4px;
 }
 
-.item > .button {
-  transform: translateY(-25%);
+@media only screen and (max-width: 700px) {
+  .ui.secondary.pointing.menu .link.item > .content {
+    display: none;
+  }
+  
+  .ui.secondary.pointing.menu > .link.item {
+    margin-left: 0;
+  }
 }

@@ -3,10 +3,10 @@ var React = require('react')
 var Category = React.createClass({
   render: function() {
     return (
-      <div className="item">
+      <label for={this.props.icon} className="item">
         <div className="right floated content">
           <div className="ui fitted checkbox">
-            <input type="checkbox" />
+            <input id={this.props.icon} type="checkbox" />
             <label></label>
           </div>
         </div>
@@ -14,7 +14,7 @@ var Category = React.createClass({
         <div className="content">
           {this.props.name}
         </div>
-      </div>
+      </label>
     )
   }
 });

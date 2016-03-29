@@ -10,11 +10,11 @@ var Menu = React.createClass({
         </div>
         <a className="active link item">
           <i className="large home icon"></i>
-          Home
+          <span className="content">Home</span>
         </a>
         <a className="link item">
           <i className="large star icon"></i>
-          Favorites
+          <span className="content">Favorites</span>
         </a>
         <div className="right menu">
           <div className="item">
