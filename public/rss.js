@@ -129,7 +129,7 @@ function compileData(callback) {
   numCompile++;
   if(numCompile == numLoops) {
     data.sort(function(a,b){
-      return a.date - b.date;
+      return b.date - a.date;
     });
     callback(data);
   }
