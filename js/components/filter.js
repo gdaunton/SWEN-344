@@ -12,15 +12,21 @@ var Filter = React.createClass({
       tech: true
     }
   },
+  componentDidMount: function() {
+    $('.ui.sticky').sticky({
+      offset: 75,
+    });
+  },
 
   componentWillUpdate: function(nextProps, nextState) {
-    nextProps.onChange(nextState);
+    if (nextState != this.state)
+      nextProps.onChange(nextState);
   },
 
   render: function() {
     return (
-      <div className="four wide column">
-        <div className="ui segment">
+      <div className="filter four wide column">
+        <div className="ui sticky segment">
           <div className="ui middle aligned list">
             <Category name="US News" icon="map marker" color="#db2828"valueLink={this.linkState("us")} />
             <Category name="World News" icon="globe" color="#1678c2" valueLink={this.linkState("world")} />

@@ -51,11 +51,25 @@ body {
   border-bottom-width: 4px;
 }
 
-@media only screen and (max-width: 700px) {
+.filter {
+  z-index: 1;
+}
+
+.ui.card, .ui.cards>.card {
+  display: inline-flex;
+  margin: 14px!important;
+}
+
+#content {
+  padding: 14px 0 0 0;
+}
+
+
+@media only screen and (max-width: 750px) {
   .ui.secondary.pointing.menu .link.item > .content {
     display: none;
   }
-  
+
   .ui.secondary.pointing.menu > .link.item {
     margin-left: 0;
   }
