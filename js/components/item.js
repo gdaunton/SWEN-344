@@ -8,7 +8,7 @@ var Item = React.createClass({
       <div className="ui card">
         {image}
         <div className="content">
-          <a className="header" href={this.props.url}>{this.props.title}</a>
+          <a className="header" target="_blank" href={this.props.url}>{this.props.title}</a>
           <div className="meta">
             <span className="category">{this.props.date}</span>
           </div>
