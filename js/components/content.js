@@ -1,5 +1,6 @@
 var React = require('react');
 var Item = require('./Item');
+var dateFormat = require('dateformat');
 
 var Content = React.createClass({
 
@@ -23,7 +24,7 @@ var Content = React.createClass({
     if (this.props.data != null && this.props.data.length != 0) {
       var self = this;
       elements = this.props.data.map(function(item, index) {
-        return (<Item key={index} title={item.title} description={item.description} url={item.link} image={item.image} date={item.date.toISOString()} type={self.resovleType(item.type)} />);
+        return (<Item key={index} title={item.title} description={item.description} url={item.link} image={item.image} date={dateFormat(item.date, "mmm dS, yyyy h:MM TT")} type={self.resovleType(item.type)} />);
       });
     } else if (this.props.data != null && this.props.data.length == 0) {
       elements = (<h2 className="ui center aligned purple header" style={{margin: 0, padding: '3em'}}>No Items</h2>);
