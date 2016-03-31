@@ -1,4 +1,5 @@
 var React = require('react')
+var ReactDOM = require('react-dom');
 
 var Category = React.createClass({
   getValueLink: function(props) {
@@ -14,7 +15,7 @@ var Category = React.createClass({
 
   componentWillReceiveProps: function(nextProps) {
     var valueLink = this.getValueLink(nextProps);
-    $(this.getDOMNode()).children('input').prop('checked', valueLink.value);
+    $(ReactDOM.findDOMNode(this)).children('input').prop('checked', valueLink.value);
   },
 
   render: function() {
