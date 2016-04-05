@@ -7,6 +7,9 @@ var Menu = React.createClass({
   },
 
   login: function() {
+    $('#user').val('');
+    $('#pass').val('');
+    $('#login .content .ui.error.message').remove();
     $('.ui.modal').modal('show');
     var submit = this.submit;
     $('#login').submit(function(e) {
@@ -16,8 +19,13 @@ var Menu = React.createClass({
 
   submit: function(e) {
     e.preventDefault();
-    this.props.action.login(this.refs.username.value, this.refs.password.value, function(){
-      console.log('error');
+    this.props.action.login(this.refs.username.value, this.refs.password.value, function(data){
+      if (typeof data == 'string') {
+        $('#login .content .ui.error.message').remove();
+        $('#login .content').prepend('<div class="ui error message"><div class="header">' + data + '</div></div>');
+      } else {
+        $('.ui.modal').modal('hide');
+      }
     });
   },
 
@@ -30,7 +38,7 @@ var Menu = React.createClass({
           <div className="center logo item">
             <img src="assets/images/icon.png" />
           </div>
-          <Link to="/" className="link item" activeClassName="active">
+          <Link to="/" className="link item" activeClassName="active" onlyActiveOnIndex>
             <i className="large home icon"></i>
             <span className="content">Home</span>
           </Link>
@@ -60,11 +68,11 @@ var Menu = React.createClass({
             <div className="ui form">
               <div className="field">
                 <label>Username</label>
-                <input type="text" ref="username" placeholder="Username" required />
+                <input id="user" type="text" ref="username" placeholder="Username" required />
               </div>
               <div className="field">
                 <label>Password</label>
-                <input type="password" ref="password" placeholder="Password" required />
+                <input id="pass" type="password" ref="password" placeholder="Password" required />
               </div>
             </div>
           </div>

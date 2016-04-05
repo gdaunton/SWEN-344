@@ -35,9 +35,9 @@ var Home = React.createClass({
   render: function() {
     return (
       <main>
-        <Menu action={this.props.route.action}/>
+        <Menu action={this.props.action} user={this.props.user} />
         <div className="ui centered stackable grid" style={{'paddingTop':'5.5em'}}>
-          <Filter onChange={this.filterChange} />
+          <Filter onChange={this.filterChange} user={this.props.user} />
           <Content data={this.state.data} />
         </div>
       </main>
