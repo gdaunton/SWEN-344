@@ -26,13 +26,18 @@ var App = React.createClass({
     this.setState({'user': null});
   },
 
+  updateUser: function(user) {
+      this.setState({'user': user});
+  },
+
   render: function() {
     var user_function = this.state.user == null ? {'login': this.login} : {'logout': this.logout};
     return(
       <main>
         {this.props.children && React.cloneElement(this.props.children, {
           action: user_function,
-          user: this.state.user
+          user: this.state.user,
+          updateUser: this.updateUser
         })}
       </main>
     )
@@ -43,40 +48,7 @@ ReactDOM.render((
   <Router history={hashHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
-      <Route path="favorites" component={Home} />
+      <Route path="favorites" component={Favorites} />
     </Route>
   </Router>
 ), document.getElementById('main'));
-
-function login(username, password, callback) {
-  $.getJSON("php/data.json", {
-      format: "json"
-    })
-    .done( function(data) {
-      var stuff = null;
-      data.users.forEach(function (item, index) {
-        if(item.name == username) {
-          if(item.password == password) {
-            stuff = item;
-            return;
-          } else {
-            stuff = "incorrect password";
-          }
-        }
-      });
-      if(stuff == null) stuff = "user not found";
-      callback(stuff);
-    });
-};
-
-function register(username, password) {
-  $.getJSON("php/data.json", function(data) {
-    data.users.forEach(function(item, index) {
-      if(item.name == username) {
-        return "user already exists";
-      }
-    });
-    data.users.put({"name": username, "password": password, "fav": []});
-    console.log(data);
-  });
-};

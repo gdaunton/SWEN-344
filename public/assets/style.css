@@ -60,6 +60,25 @@ body {
   margin: 14px!important;
 }
 
+.right.floated.star {
+  border: none;
+  background: inherit;
+}
+
+.right.floated.star:focus {
+  outline: none;
+}
+
+.right.floated.star:hover .icon {
+  color: #FFB70A;
+  opacity: 1;
+}
+
+.active.right.floated.star .icon {
+  color: #FFB70A;
+  opacity: 1;
+}
+
 #content {
   padding: 0;
 }

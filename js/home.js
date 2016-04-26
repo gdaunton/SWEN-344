@@ -32,13 +32,18 @@ var Home = React.createClass({
     });
   },
 
+  onFavorite: function(event, data) {
+    console.log("onFavorite");
+    //this.props.updateUser(addFavorite(this.props.user, data));
+  },
+
   render: function() {
     return (
       <main>
         <Menu action={this.props.action} user={this.props.user} />
         <div className="ui centered stackable grid" style={{'paddingTop':'5.5em'}}>
           <Filter onChange={this.filterChange} user={this.props.user} />
-          <Content data={this.state.data} />
+          <Content data={this.state.data} onFavorite={this.onFavorite}/>
         </div>
       </main>
     )

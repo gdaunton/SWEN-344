@@ -1,19 +1,20 @@
 var React = require('react')
+var dateFormat = require('dateformat');
 
 var Item = React.createClass({
 
   render: function() {
-    var image = this.props.image != null ? (<div className="image"><img className="masonry-image" src={this.props.image} /></div>) : [];
+    var image = this.props.data.image != null ? (<div className="image"><img className="masonry-image" src={this.props.data.image} /></div>) : [];
     return (
       <div className="ui card">
         {image}
         <div className="content">
-          <a className="header" target="_blank" href={this.props.url}>{this.props.title}</a>
+          <a className="header" target="_blank" href={this.props.data.url}>{this.props.data.title}</a>
           <div className="meta">
-            <span className="category">{this.props.date}</span>
+            <span className="category">{dateFormat(this.props.data.date, "mmm dS, yyyy h:MM TT")}</span>
           </div>
           <div className="description">
-            <p>{this.props.description}</p>
+            <p>{this.props.data.description}</p>
           </div>
         </div>
         <div className="extra content">
@@ -21,10 +22,10 @@ var Item = React.createClass({
             <i className={this.props.type.icon + ' icon'} style={{color: this.props.type.color}}></i>
             {this.props.type.type}
           </div>
-          <div className="right floated star">
+          <button className={(this.props.selected ? "active " : "") + "right floated star"} onClick={() => { this.props.onFavorite(this.props.data) }}>
             <i className="star icon"></i>
             Favorite
-          </div>
+          </button>
         </div>
       </div>
     )
