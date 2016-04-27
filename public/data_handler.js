@@ -1,15 +1,19 @@
-$.getJSON("php/data.json", {
-    format: "json"
-  }, function(data) {
-    localStorage.setItem("userData", JSON.stringify(data.users));
-  });
+if(localStorage.userData == null) {
+  $.getJSON("php/data.json", {
+      format: "json"
+    }, function(data) {
+      localStorage.setItem("userData", JSON.stringify(data));
+    });
+}
+
 
 function addFavorite(user, favorite) {
   if(user != null) {
     var data = JSON.parse(localStorage.userData);
     data.forEach(function(item, index){
       if(item.username == user.username) {
-        item.fav.put(favorite);
+        item.fav.push(favorite);
+        user.fav.push(favorite);
         return;
       }
     });
@@ -18,13 +22,14 @@ function addFavorite(user, favorite) {
   return user;
 }
 
-function removeFavorite(user, url) {
+function removeFavorite(user, favorite) {
   var data = JSON.parse(localStorage.userData);
   data.forEach(function(item, index){
     if(item.username == user.username) {
-      item.fav.forEach(function(item, index) {
-        if(item.url == favorite.url) {
-          delete item.fav[index];
+      item.fav.forEach(function(fav_item, index) {
+        if(fav_item.url == favorite.url) {
+          item.fav.splice(index, 1);
+          user.fav.splice(index, 1);
           return;
         }
       });
@@ -38,7 +43,7 @@ function login(username, password, callback) {
   if(localStorage.userData != null) {
     var stuff = null;
     JSON.parse(localStorage.userData).forEach(function (item, index) {
-      if(item.name == username) {
+      if(item.username == username) {
         if(item.password == password) {
           stuff = item;
           return;
@@ -56,7 +61,7 @@ function login(username, password, callback) {
       .done( function(data) {
         var stuff = null;
         data.users.forEach(function (item, index) {
-          if(item.name == username) {
+          if(item.username == username) {
             if(item.password == password) {
               stuff = item;
               return;
@@ -73,15 +78,19 @@ function login(username, password, callback) {
 
 function register(username, password) {
   var data = JSON.parse(localStorage.userData);
+  var user = null;
   data.forEach(function(item, index) {
-    if(item.name == username) {
+    if(item.username == username) {
       data = "user already exists";
       return;
     }
   });
-  if(typeof data != String) {
-    data.put({"name": username, "password": password, "fav": []});
+  console.log(data);
+  if(typeof data != 'string') {
+    var user = {"username": username, "password": password, "fav": []};
+    data.push(user);
     localStorage.setItem("userData", JSON.stringify(data));
+    data = user;
   }
   return data;
 };

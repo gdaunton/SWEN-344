@@ -32,7 +32,7 @@ var Filter = React.createClass({
             if (this.props.user != null) {
               return (
                 <h4 className="ui purple header">
-                  Logged in as <b>{this.props.user.name}</b>
+                  Logged in as <b>{this.props.user.username}</b>
                 <span className="sub header">Last login: {Cookies.get('last_login') != null ? dateFormat(Cookies.get('last_login'), "mmm dS, yyyy h:MM TT") : "N/A"}</span>
                 </h4>
               );

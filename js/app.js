@@ -5,7 +5,12 @@ var Home = require('./Home')
 var Favorites = require('./Favorites')
 
 var App = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
   getInitialState: function() {
+    this.context.router.push('/');
     return {
       'user': null,
     }
@@ -23,15 +28,25 @@ var App = React.createClass({
 
   logout: function() {
     Cookies.set('last_login', Date());
+    this.context.router.push('/');
     this.setState({'user': null});
   },
 
+  register: function(username, password, callback) {
+    var self = this;
+    var data = register(username, password)
+    if (typeof data != 'string') {
+      self.setState({'user': data});
+    }
+    callback(data);
+  },
+
   updateUser: function(user) {
-      this.setState({'user': user});
+    this.setState({'user': user});
   },
 
   render: function() {
-    var user_function = this.state.user == null ? {'login': this.login} : {'logout': this.logout};
+    var user_function = this.state.user == null ? {'login': this.login, 'register': this.register} : {'logout': this.logout};
     return(
       <main>
         {this.props.children && React.cloneElement(this.props.children, {

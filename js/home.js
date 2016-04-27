@@ -32,9 +32,25 @@ var Home = React.createClass({
     });
   },
 
-  onFavorite: function(event, data) {
-    console.log("onFavorite");
-    //this.props.updateUser(addFavorite(this.props.user, data));
+  onFavorite: function(data) {
+    if(this.isFavorite(data.url)) {
+      this.props.updateUser(removeFavorite(this.props.user, data));
+    } else {
+      this.props.updateUser(addFavorite(this.props.user, data));
+    }
+  },
+
+  isFavorite: function(url) {
+    var favorite = false;
+    if(this.props.user == null)
+      return false;
+    this.props.user.fav.forEach(function(item){
+      if(item.url === url){
+        favorite = true;
+        return;
+      }
+    });
+    return favorite;
   },
 
   render: function() {
@@ -43,7 +59,7 @@ var Home = React.createClass({
         <Menu action={this.props.action} user={this.props.user} />
         <div className="ui centered stackable grid" style={{'paddingTop':'5.5em'}}>
           <Filter onChange={this.filterChange} user={this.props.user} />
-          <Content data={this.state.data} onFavorite={this.onFavorite}/>
+          <Content user={this.props.user} data={this.state.data} isFavorite={this.isFavorite} onFavorite={this.onFavorite}/>
         </div>
       </main>
     )

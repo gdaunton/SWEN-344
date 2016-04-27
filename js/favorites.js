@@ -29,8 +29,12 @@ var Favorites = React.createClass({
     this.setState({data: newData});
   },
 
-  onFavorite: function(event, data) {
+  onFavorite: function(data) {
     this.props.updateUser(removeFavorite(this.props.user, data));
+  },
+
+  isFavorite: function() {
+    return true;
   },
 
   render: function() {
@@ -39,7 +43,7 @@ var Favorites = React.createClass({
         <Menu action={this.props.action} user={this.props.user} />
         <div className="ui centered stackable grid" style={{'paddingTop':'5.5em'}}>
           <Filter onChange={this.filterChange} user={this.props.user} />
-          <Content data={this.state.data} onFavorite={this.onFavorite}/>
+          <Content user={this.props.user} data={this.state.data} isFavorite={this.isFavorite} onFavorite={this.onFavorite}/>
         </div>
       </main>
     )

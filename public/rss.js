@@ -42,7 +42,7 @@ function getData(options, numFromEach, callback) {
           if (entry.mediaGroups != null){
             image = entry.mediaGroups[0].contents[0].url;
           }
-          data.push({title: entry.title, link: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'US'});
+          data.push({title: entry.title, url: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'US'});
         }
         compileData(callback);
       });
@@ -60,7 +60,7 @@ function getData(options, numFromEach, callback) {
           if (entry.mediaGroups != null){
             image = entry.mediaGroups[0].contents[0].url;
           }
-          data.push({title: entry.title, link: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'World'});
+          data.push({title: entry.title, url: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'World'});
         }
         compileData(callback);
       });
@@ -78,7 +78,7 @@ function getData(options, numFromEach, callback) {
           if (entry.mediaGroups != null){
             image = entry.mediaGroups[0].contents[0].url;
           }
-          data.push({title: entry.title, link: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'Tech'});
+          data.push({title: entry.title, url: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'Tech'});
         }
         compileData(callback);
       });
@@ -96,7 +96,7 @@ function getData(options, numFromEach, callback) {
           if (entry.mediaGroups != null){
             image = entry.mediaGroups[0].contents[0].url;
           }
-          data.push({title: entry.title, link: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'Sports'});
+          data.push({title: entry.title, url: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'Sports'});
         }
         compileData(callback);
       });
@@ -114,7 +114,7 @@ function getData(options, numFromEach, callback) {
           if (entry.mediaGroups != null){
             image = entry.mediaGroups[0].contents[0].url;
           }
-          data.push({title: entry.title, link: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'Weather'});
+          data.push({title: entry.title, url: entry.link, description: entry.contentSnippet, date: new Date(entry.publishedDate), image: image, type: 'Weather'});
         }
         compileData(callback);
       });

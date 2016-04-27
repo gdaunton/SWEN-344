@@ -1,11 +1,9 @@
-{
-  "users" : [
-    {
-      "name": "gareth",
-      "password": "pass",
-      "fav": [
+[
+  {
+    "username": "gareth",
+    "password": "pass",
+    "fav": [
 
-      ]
-    }
-  ]
-}
+    ]
+  }
+]

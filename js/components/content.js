@@ -23,7 +23,7 @@ var Content = React.createClass({
     if (this.props.data != null && this.props.data.length != 0) {
       var self = this;
       elements = this.props.data.map(function(item, index) {
-        return (<Item onFavorite={self.props.onFavorite} key={index} data={item} type={self.resovleType(item.type)} />);
+        return (<Item onFavorite={self.props.onFavorite} selected={self.props.isFavorite(item.url)} key={index} data={item} type={self.resovleType(item.type)} />);
       });
     } else if (this.props.data != null && this.props.data.length == 0) {
       elements = (<h2 className="ui center aligned purple header" style={{margin: 0, padding: '3em'}}>No Items</h2>);
