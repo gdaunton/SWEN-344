@@ -14,9 +14,14 @@ var Filter = React.createClass({
     }
   },
   componentDidMount: function() {
-    $('.ui.sticky').sticky({
-      offset: 75,
-    });
+    console.log($(window).width());
+    if($(window).width() > 750) {
+      $('.ui.sticky').sticky({
+        offset: 75,
+      });
+    } else {
+      $('.ui.sticky').removeClass('sticky');
+    }
   },
 
   componentWillUpdate: function(nextProps, nextState) {
