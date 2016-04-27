@@ -14,6 +14,7 @@ var Menu = React.createClass({
     var submit = this.submit;
     var action = "";
     $('#login').submit(function(e) {
+      e.preventDefault();
       submit(e, action);
     });
     $('#log').click(function(e) {
@@ -67,7 +68,7 @@ var Menu = React.createClass({
           </div>
         </div>
 
-        <form id="login" className="ui basic small modal" onSubmit={this.submit} style={{textAlign: 'center'}}>
+        <form id="login" className="ui basic small modal" style={{textAlign: 'center'}}>
           <img className="ui small image" src="assets/images/icon.png" style={{margin: '0 auto'}}/>
           <div className="header" style={{padding: '0'}}>
             Login / Register
