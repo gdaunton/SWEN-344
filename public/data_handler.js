@@ -1,5 +1,5 @@
 if(localStorage.userData == null) {
-  $.getJSON("php/data.json", {
+  $.getJSON("data/data.json", {
       format: "json"
     }, function(data) {
       localStorage.setItem("userData", JSON.stringify(data));
