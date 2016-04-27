@@ -13,7 +13,7 @@ var Favorites = React.createClass({
 
   filterChange: function(filter) {
     var self = this;
-    var newData = null;
+    var newData = [];
     this.props.user.fav.forEach(function(item, index){
       if(item.type == 'US' && filter.us)
         newData.push(item);
