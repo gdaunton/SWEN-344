@@ -3,14 +3,14 @@ import { Link } from 'react-router'
 
 var Menu = React.createClass({
   onComponenetDidMount: function() {
-    $('.ui.modal').modal('hide');
+    $('#login').modal('hide');
   },
 
   login: function() {
     $('#user').val('');
     $('#pass').val('');
     $('#login .content .ui.error.message').remove();
-    $('.ui.modal').modal('show');
+    $('#login').modal('show');
     var submit = this.submit;
     var action = "";
     $('#login').submit(function(e) {

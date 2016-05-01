@@ -1,6 +1,5 @@
 var express = require('express'),
     path = require('path'),
-    php = require("node-php"),
     port = process.env.PORT || 8000,
     app = express();
 

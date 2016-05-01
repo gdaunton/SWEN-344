@@ -14,6 +14,10 @@ var init = {
 
 var Home = React.createClass({
 
+  onComponenetDidMount: function() {
+    $('#dialog').modal('hide');
+  },
+
   getInitialState: function() {
     var self = this;
     getData(init, numItems, function(data){
@@ -33,10 +37,14 @@ var Home = React.createClass({
   },
 
   onFavorite: function(data) {
-    if(this.isFavorite(data.url)) {
-      this.props.updateUser(removeFavorite(this.props.user, data));
+    if(this.props.user == null) {
+      $('#dialog').modal('show');
     } else {
-      this.props.updateUser(addFavorite(this.props.user, data));
+      if(this.isFavorite(data.url)) {
+        this.props.updateUser(removeFavorite(this.props.user, data));
+      } else {
+        this.props.updateUser(addFavorite(this.props.user, data));
+      }
     }
   },
 
@@ -56,6 +64,16 @@ var Home = React.createClass({
   render: function() {
     return (
       <main>
+        <div id="dialog" className="ui basic small modal" style={{textAlign: 'center'}}>
+          <div className="ui icon header">
+            <i className="purple question icon"></i>
+            Pls Login Silly
+          </div>
+          <div className="content">You gotta login to do dat</div>
+          <div className="actions">
+            <div className="ui green basic approve button">Shoot OK</div>
+          </div>
+        </div>
         <Menu action={this.props.action} user={this.props.user} />
         <div className="ui centered stackable grid" style={{'paddingTop':'5.5em'}}>
           <Filter onChange={this.filterChange} user={this.props.user} />
